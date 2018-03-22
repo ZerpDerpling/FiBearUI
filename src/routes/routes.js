@@ -7,7 +7,6 @@ import Overview from 'src/components/Dashboard/Views/Overview.vue'
 import UserProfile from 'src/components/Dashboard/Views/UserProfile.vue'
 import OrderList from 'src/components/Dashboard/Views/OrderList.vue'
 import Blocks from 'src/components/Dashboard/Views/Blocks.vue'
-import Icons from 'src/components/Dashboard/Views/Icons.vue'
 
 const routes = [
   {
@@ -39,11 +38,6 @@ const routes = [
         path: 'blocks',
         name: 'Blocks',
         component: Blocks
-      },
-      {
-        path: 'icons',
-        name: 'Icons',
-        component: Icons
       }
     ]
   },
