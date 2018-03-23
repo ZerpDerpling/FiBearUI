@@ -23,7 +23,7 @@
   </div>
 </template>
 <script>
-  import LTable from 'src/components/UIComponents/UserTable.vue'
+  import LTable from 'src/components/UIComponents/OrderTable.vue'
   import Card from 'src/components/UIComponents/Cards/Card.vue'
 
   const tableColumns = ['Id', 'Name', 'Description', 'Hour_start', 'Hour_end']

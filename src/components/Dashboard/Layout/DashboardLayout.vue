@@ -8,7 +8,7 @@
       </sidebar-link>
       <sidebar-link to="/admin/user">
         <i class="nc-icon nc-circle-09"></i>
-        <p>User Profile</p>
+        <p>User List</p>
       </sidebar-link>
       <sidebar-link to="/admin/order-list">
         <i class="nc-icon nc-notes"></i>

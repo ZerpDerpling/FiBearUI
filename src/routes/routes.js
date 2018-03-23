@@ -4,15 +4,19 @@ import NotFound from '../components/GeneralViews/NotFoundPage.vue'
 
 // Admin pages
 import Overview from 'src/components/Dashboard/Views/Overview.vue'
-import UserProfile from 'src/components/Dashboard/Views/UserProfile.vue'
+import UserList from 'src/components/Dashboard/Views/UserList.vue'
 import OrderList from 'src/components/Dashboard/Views/OrderList.vue'
 import Blocks from 'src/components/Dashboard/Views/Blocks.vue'
+import Login from 'src/components/Dashboard/Views/Login.vue'
 
 const routes = [
   {
     path: '/',
     component: DashboardLayout,
     redirect: '/admin/overview'
+  },{
+    path: '/login',
+    component: Login
   },
   {
     path: '/admin',
@@ -27,7 +31,7 @@ const routes = [
       {
         path: 'user',
         name: 'User',
-        component: UserProfile
+        component: UserList
       },
       {
         path: 'order-list',
