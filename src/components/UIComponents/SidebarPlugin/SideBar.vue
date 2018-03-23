@@ -8,6 +8,7 @@
         <a href="#" class="simple-text">
             <div class="logo_img">
                 <img src="static/img/fibear_logo.png" alt="">
+
             </div>
           {{title}}
         </a>
