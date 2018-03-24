@@ -175,6 +175,8 @@
   import Card from 'src/components/UIComponents/Cards/Card.vue'
   import LTable from 'src/components/UIComponents/UserTable.vue'
   import Checkbox from 'src/components/UIComponents/Inputs/Checkbox.vue'
+  import store from 'src/store/store.js'
+  import routes from 'src/routes/routes.js'
 
   export default {
     components: {
@@ -184,6 +186,13 @@
       ChartCard,
       StatsCard
     },
+    beforeCreate () {
+        store.commit('LOGOUT_USER');
+        if (!store.state.isLogged) {
+        routes.push('/login')
+      }
+    }
+    ,
     data () {
       return {
         editTooltip: 'Edit Task',

@@ -12,8 +12,8 @@ import Login from 'src/components/Dashboard/Views/Login.vue'
 const routes = [
   {
     path: '/',
-    component: DashboardLayout,
-    redirect: '/admin/overview'
+    component: Login,
+    redirect: '/login'
   },{
     path: '/login',
     component: Login

@@ -30,42 +30,49 @@
 <script>
 import Vue from 'vue'
 import routes from 'src/routes/routes.js'
+import store from 'src/store/store.js'
 export default {
 
   name: 'login',
 
   data(){
     return{
-      loader: true,
       infoError: false,
       username: '',
       password: ''
     }
   },
   beforeCreate () {
-
-  },
+      if (!store.state.isLogged) {
+      routes.push('/login')
+    } else {
+      routes.push('/admin')
+    }
+  }
+  ,
   methods:{
     login(){
-  
+      this.infoError=false;
       this.$http.post('http://35.229.53.76/v1/auth/login', {
                     username: this.username,
                     password: this.password
 
                 }).then((response) => {
                     console.log(response);
-                    localStorage.setItem('token', response.body.token)
-                    store.commit('LOGIN_USER')
-                    router.push('/')
+                    localStorage.setItem('token', response.body.token);
+                    store.commit('LOGIN_USER');
+                    console.log(store.state.isLogged);
+                    routes.push('/admin');
+
                 }, (error) => {
                     console.log(error);
-                    this.infoError = true
-                    this.loader = false
-                    this.password = ''
+                    store.commit('LOGOUT_USER');
+                    console.log(store.state.isLogged);
+                    this.infoError = true;
+                    this.password = '';
                 })    
     }
   }
-
 }
 </script>
 
