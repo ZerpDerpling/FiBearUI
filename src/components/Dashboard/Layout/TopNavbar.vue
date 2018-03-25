@@ -20,11 +20,11 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link" href="#">
-              Account
+              Admin Account
             </a>
           </li>
           <li class="nav-item">
-            <a href="/#/login" class="nav-link">
+            <a href="#" v-on:click="logout()" class="nav-link">
               Log out
             </a>
           </li>
@@ -34,6 +34,7 @@
   </nav>
 </template>
 <script>
+  import store from 'src/store/store.js'
   export default {
     computed: {
       routeName () {
@@ -47,6 +48,12 @@
       }
     },
     methods: {
+      logout(){
+        store.commit('LOGOUT_USER');
+        localStorage.removeItem('token');
+        this.$router.push("/login");
+        console.log("IsLogged: "+store.state.isLogged)
+      },
       capitalizeFirstLetter (string) {
         return string.charAt(0).toUpperCase() + string.slice(1)
       },

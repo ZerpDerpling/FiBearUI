@@ -44,16 +44,16 @@ export default {
   },
   beforeCreate () {
       if (!store.state.isLogged) {
-      routes.push('/login')
+      this.$router.push('/login');
     } else {
-      routes.push('/admin')
+      this.$router.push('/admin');
     }
   }
   ,
   methods:{
     login(){
       this.infoError=false;
-      this.$http.post('http://35.229.53.76/v1/auth/login', {
+      this.$http.post('http://35.229.53.76/v1/admin/login', {
                     username: this.username,
                     password: this.password
 
@@ -61,13 +61,15 @@ export default {
                     console.log(response);
                     localStorage.setItem('token', response.body.token);
                     store.commit('LOGIN_USER');
-                    console.log(store.state.isLogged);
-                    routes.push('/admin');
+                    console.log("IsLogged: "+store.state.isLogged);
+                    this.$router.push('/admin',()=>{
+                        console.log("REDIRECTED");
+                    });
+                    
 
                 }, (error) => {
                     console.log(error);
-                    store.commit('LOGOUT_USER');
-                    console.log(store.state.isLogged);
+                    console.log("IsLogged: "+store.state.isLogged);
                     this.infoError = true;
                     this.password = '';
                 })    

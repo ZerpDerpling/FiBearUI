@@ -8,8 +8,8 @@
               <i class="nc-icon nc-chart text-warning"></i>
             </div>
             <div slot="content">
-              <p class="card-category">Capacity</p>
-              <h4 class="card-title">105GB</h4>
+              <p class="card-category">App version</p>
+              <h4 class="card-title">1.x.x</h4>
             </div>
             <div slot="footer">
               <i class="fa fa-refresh"></i>Updated now
@@ -38,8 +38,8 @@
               <i class="nc-icon nc-vector text-danger"></i>
             </div>
             <div slot="content">
-              <p class="card-category">Errors</p>
-              <h4 class="card-title">23</h4>
+              <p class="card-category">Bugs</p>
+              <h4 class="card-title">At least 1</h4>
             </div>
             <div slot="footer">
               <i class="fa fa-clock-o"></i>Last day
@@ -53,11 +53,11 @@
               <i class="nc-icon nc-favourite-28 text-primary"></i>
             </div>
             <div slot="content">
-              <p class="card-category">Followers</p>
-              <h4 class="card-title">+45</h4>
+              <p class="card-category">Downloaded</p>
+              <h4 class="card-title">4</h4>
             </div>
             <div slot="footer">
-              <i class="fa fa-refresh"></i>Updated now
+              <i class="fa fa-refresh"></i>
             </div>
           </stats-card>
         </div>
@@ -69,14 +69,12 @@
                       :chart-options="lineChart.options"
                       :responsive-options="lineChart.responsiveOptions">
             <template slot="header">
-              <h4 class="card-title">Users Behavior</h4>
-              <p class="card-category">24 Hours performance</p>
+              <h4 class="card-title">Bears average rating</h4>
+              <p class="card-category">Last year</p>
             </template>
             <template slot="footer">
               <div class="legend">
-                <i class="fa fa-circle text-info"></i> Open
-                <i class="fa fa-circle text-danger"></i> Click
-                <i class="fa fa-circle text-warning"></i> Click Second Time
+                <i class="fa fa-circle text-warning"></i> Average score
               </div>
               <hr>
               <div class="stats">
@@ -89,14 +87,13 @@
         <div class="col-md-4">
           <chart-card :chart-data="pieChart.data" chart-type="Pie">
             <template slot="header">
-              <h4 class="card-title">Email Statistics</h4>
-              <p class="card-category">Last Campaign Performance</p>
+              <h4 class="card-title">Thống kê Gấu / Khách</h4>
+              <p class="card-category">Performance</p>
             </template>
             <template slot="footer">
               <div class="legend">
-                <i class="fa fa-circle text-info"></i> Open
-                <i class="fa fa-circle text-danger"></i> Bounce
-                <i class="fa fa-circle text-warning"></i> Unsubscribe
+                <i class="fa fa-circle text-info"></i> Gấu
+                <i class="fa fa-circle text-danger"></i> Khách  
               </div>
               <hr>
               <div class="stats">
@@ -115,13 +112,13 @@
             :chart-responsive-options="barChart.responsiveOptions"
             chart-type="Bar">
             <template slot="header">
-              <h4 class="card-title">2014 Sales</h4>
+              <h4 class="card-title">Sales</h4>
               <p class="card-category">All products including Taxes</p>
             </template>
             <template slot="footer">
               <div class="legend">
-                <i class="fa fa-circle text-info"></i> Tesla Model S
-                <i class="fa fa-circle text-danger"></i> BMW 5 Series
+                <i class="fa fa-circle text-info"></i> From Bears
+                <i class="fa fa-circle text-danger"></i> From Customers
               </div>
               <hr>
               <div class="stats">
@@ -187,10 +184,10 @@
       StatsCard
     },
     beforeCreate () {
-        store.commit('LOGOUT_USER');
-        if (!store.state.isLogged) {
-        routes.push('/login')
+        if (!store.state.isLogged) {  
+        this.$router.push('/login');
       }
+      console.log("IsLogged: "+store.state.isLogged)
     }
     ,
     data () {
@@ -199,22 +196,22 @@
         deleteTooltip: 'Remove',
         pieChart: {
           data: {
-            labels: ['40%', '20%', '40%'],
-            series: [40, 20, 40]
+            labels: ['72%', '28%'],
+            series: [72, 28]
           }
         },
         lineChart: {
           data: {
-            labels: ['9:00AM', '12:00AM', '3:00PM', '6:00PM', '9:00PM', '12:00PM', '3:00AM', '6:00AM'],
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
             series: [
-              [287, 385, 490, 492, 554, 586, 698, 695],
               [67, 152, 143, 240, 287, 335, 435, 437],
-              [23, 113, 67, 108, 190, 239, 307, 308]
+              [67, 152, 143, 240, 287, 335, 435, 437],
+              [3.5,3.6,4,3.5,3.3,4,4.2,4.5,3.2,3.6,2.5,4.5]
             ]
           },
           options: {
             low: 0,
-            high: 800,
+            high: 5,
             showArea: false,
             height: '245px',
             axisX: {

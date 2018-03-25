@@ -12,7 +12,7 @@
       </sidebar-link>
       <sidebar-link to="/admin/order-list">
         <i class="nc-icon nc-notes"></i>
-        <p>Order list</p>
+        <p>Reviews</p>
       </sidebar-link>
       <sidebar-link to="/admin/blocks">
         <i class="nc-icon nc-paper-2"></i>
